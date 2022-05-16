@@ -64,7 +64,7 @@
                 <div class="d-grid gap-3">
                     <button class="btn btn-primary fw-bold btn-add-to-cart btn-spinner"><i class="fa fa-plus" aria-hidden="true"></i> Keranjang
                     </button>
-                    <a href="{{route('cart')}}" class="btn btn-outline-primary fw-bold">Beli Langsung</a>
+                    <a href="{{route('cart')."?id=".$product[0]->product_id}}" class="btn btn-outline-primary fw-bold">Beli Langsung</a>
                 </div>
             </div>
         </div>

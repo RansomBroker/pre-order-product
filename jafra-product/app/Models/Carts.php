@@ -14,12 +14,12 @@ class Carts extends Model
 
     public function consultants()
     {
-        return $this->hasMany(Consultants::class, "consultant_id");
+        return $this->belongsTo(Consultants::class, "consultant_id");
     }
 
     public function products()
     {
-        return $this->hasMany(Products::class, "product_id");
+        return $this->belongsTo(Products::class, "product_id");
     }
 
 }

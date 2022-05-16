@@ -34,14 +34,48 @@ class OrderController extends Controller
          * TODO
          *  1. show all item in user cart
          *  2, count total price
+         *  3. buy now check id if exist then no need to add to cart
+         *  4. delete item
          * */
 
-        $cartList = Carts::with(['consultants', 'products'])
+        // insert data from buy now
+        if (isset($_GET['id'])) {
+            $itemExist = Carts::with([
+                'consultants',
+                'products'
+            ])
+                ->where('consultant_id', 1)
+                ->where('product_id', $_GET['id'])
+                ->count();
+            if ($itemExist == 0 ) {
+                $cart = Carts::create([
+                    'consultant_id' => 1,
+                    'product_id' => $_GET['id'],
+                    'qty' => 1
+                ])->count();
+            }
+        }
+
+        // delete selected item
+        if (isset($_GET['delItemId'])) {
+            dd($_GET['delItemId']);
+        }
+
+        $totalChart = Carts::with('consultants')->where('consultant_id', 1)->count();
+
+        $cartList = Carts::with('consultants', 'products')
             ->where('consultant_id', 1)
             ->get();
 
+        $subTotal = Carts::withSum('products','product_price')
+            ->where('consultant_id', 1)
+            ->get();
+
+
         return view('cart', [
-            'cartItems' => $cartList
+            'totalCart' => $totalChart,
+            'cartItems' => $cartList,
+            'subTotal' => $subTotal->sum('products_sum_product_price')
         ]);
     }
 
