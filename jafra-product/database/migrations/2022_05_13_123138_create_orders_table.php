@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id('order_id')->autoIncrement();
             $table->string('order_facture');
             $table->unsignedBigInteger('consultant_id');
-            $table->unsignedBigInteger('order_items');
             $table->decimal('total', $precision = 10, $scale=2);
             $table->timestamps();
         });

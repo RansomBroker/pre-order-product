@@ -18,10 +18,16 @@ Route::get('/', [OrderController::class, 'index'])->name('home');
 
 Route::get('/detail/{id}', [OrderController::class, 'productDetail'])->name('productDetail');
 
-Route::get('/cart', [OrderController::class, "cart"])->name('cart');
+Route::get('/cart', [OrderController::class, 'cart'])->name('cart');
 
 /* AJAX req url */
-Route::get('/total-cart', [OrderController::class, "totalCart"])->name('totalCart');
+Route::get('/total-cart', [OrderController::class, 'totalCart'])->name('totalCart');
 
-Route::post('/add-new-item-chart', [OrderController::class, "insertOrIgnoreCart"])->name('addNewCart');
+Route::post('/add-new-item-chart', [OrderController::class, 'insertOrIgnoreCart'])->name('addNewCart');
+
+Route::get('/cart/create-order', [OrderController::class, 'createOrder'])->name('createOrder');
+
+Route::get('/total-notification', [OrderController::class, 'totalOrder'])->name('totalOrder');
+
+Route::get('/get-order', [OrderController::class, 'getOrder'])->name('getOrder');
 

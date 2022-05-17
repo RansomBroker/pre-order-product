@@ -36,6 +36,15 @@ return new class extends Migration
                 ->on('consultants')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+        });
+
+        Schema::table('items', function (Blueprint $table) {
+            $table
+                ->foreign('order_id')
+                ->references('order_id')
+                ->on('orders')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table
                 ->foreign('product_id')
@@ -44,6 +53,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
+
 
         Schema::table('products', function (Blueprint $table) {
             $table
@@ -121,6 +131,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //Schema::disableForeignKeyConstraints();
+        Schema::disableForeignKeyConstraints();
     }
 };
