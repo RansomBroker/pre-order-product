@@ -119,6 +119,7 @@
                             type: 'GET',
                             url: "{{ route('totalCart') }}",
                             success:function (data){
+                                $(".cart-count").show();
                                 $(".cart-count").text(data);
                             }
                         })

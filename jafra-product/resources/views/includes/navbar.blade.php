@@ -14,22 +14,37 @@
         {{-- chart and notification --}}
         <div class="col-auto py-4">
             <div class="position-relative">
-                <a href="{{route('cart')}}">
-                    <i class="fa fa-shopping-cart fs-3 text-primary" aria-hidden="true" ></i>
-                    {{-- cart--}}
-                    <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary" style="font-size: 10px">
-                    99+
-                    </span>
-                </a>
+                <i class="fa fa-shopping-cart fs-3 text-primary" aria-hidden="true" ></i>
+                {{-- cart--}}
+                <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary" style="font-size: 10px">
+                </span>
+            </div>
+            <div class="col-lg-4 col-11 col-md-6 card shadow border-radius-8 position-absolute translate-float i-10 d-none">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-primary fw-bold">Keranjang</span>
+                        <a href="{{ route('cart') }}" class="text-primary"><small>selengkapnya</small></a>
+                    </div>
+                    <div class="row justify-content-start gap-3 content">
+
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-auto">
             <div class="position-relative">
-                <i class="fa fa-bell fs-3 text-primary" aria-hidden="true"></i>
+                <i class="fa fa-bell fs-3 text-primary notification-click" aria-hidden="true"></i>
                 {{-- notification --}}
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary" style="font-size: 10px">
-                99+
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary notification-count" style="font-size: 10px">
             </span>
+            </div>
+            <div class="notif-detail col-lg-3 col-sm-4 col-md-4 card shadow border-radius-8 position-absolute translate-float i-10">
+                <div class="card-body">
+                    <p class="text-primary fw-bold">Notifikasi</p>
+                    <div class="d-flex align-items-center border-top border-bottom py-2">
+                        <a class="text-primary m-0">Order dengan kode order <b class="facture"></b> dengan total tagihan <b class="total"></b> berhasil dibuat</a>
+                    </div>
+                </div>
             </div>
         </div>
         {{--    user    --}}

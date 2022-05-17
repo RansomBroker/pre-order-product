@@ -59,6 +59,10 @@ html{
     border-radius: 12px !important;
 }
 
+.border-radius-8 {
+    border-radius: 8px !important;
+}
+
 .border-radius-start-8 {
     border-radius: 8px 0px 0px 8px !important; ;
 }
@@ -79,3 +83,32 @@ html{
     text-decoration: underline;
     color: #663482 !important;
 }
+
+.mt-60 {
+    margin-top: 15rem;
+}
+
+.i-10{
+    z-index: 10;
+}
+
+.translate-float{
+    transform: translate(-50%,0%)!important;
+}
+
+@media only screen and (max-width: 992px) {
+
+    .translate-float{
+        transform: translate(0%,0%)!important;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+
+    .translate-float{
+        transform: translate(0%,0%)!important;
+    }
+
+
+}
+
