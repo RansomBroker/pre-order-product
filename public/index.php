@@ -31,7 +31,7 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
 |
 */
 
-require __DIR__.'/../jafra-product/vendor/autoload.php';
+require __DIR__.'/../jafra-seat/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +44,7 @@ require __DIR__.'/../jafra-product/vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../jafra-product/bootstrap/app.php';
+$app = require_once __DIR__.'/../jafra-seat/bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 

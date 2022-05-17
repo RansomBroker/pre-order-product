@@ -6,6 +6,7 @@ html{
     background-color: #470A68 !important;
 }
 
+
 .btn-primary {
     background-color: #470A68 !important;
     border-color: #470A68 !important;
@@ -45,6 +46,10 @@ html{
 
 .text-gray {
     color: #616161 !important;
+}
+
+.bg-gray {
+    background-color: #C4C4C4 !important;
 }
 
 .border-outside {
