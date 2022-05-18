@@ -71,6 +71,7 @@
     </div>
 
     <script>
+        // pemilihan seat
         let currSeat = 0;
         $(".seat").click(function() {
             let seatNum = $(this).attr("id");
@@ -90,6 +91,7 @@
             }
         })
 
+        // konfirmasi
         $("#btn-confirm").click(function () {
             if(currSeat == 0) {
                 swal.fire({
