@@ -17,7 +17,7 @@
     <script>
         // hide notif view
         $(".notif-detail").hide();
-
+        $(".notification-count").hide();
         $.ajax({
             type: 'GET',
             url: "{{ route('totalCart') }}",
@@ -31,7 +31,6 @@
             }
         })
 
-
         // get order
         $.ajax({
             type: 'GET',
@@ -40,9 +39,17 @@
                 if (data > 0) {
                     $(".notification-count").show();
                     $(".notification-count").text(data);
-                } else {
-                    $(".notifcation-count").hide();
-                    $(".notif-detail").hide();
+                    // notification on click show
+                    $(".notification-click").click(function () {
+                        $(".notif-detail").toggle();
+                    })
+                    $(document).mouseup(function (e) {
+                        let notif = $(".notif-detail");
+
+                        if (!notif.is(e.target) && notif.has(e.target).length === 0) {
+                            $(".notif-detail").hide('slow');
+                        }
+                    })
                 }
             }
         })
@@ -52,24 +59,23 @@
             type: 'GET',
             url: "{{ route('getOrder') }}",
             success:function (data) {
-                $(".facture").text(data.order_facture)
-                $(".total").text("Rp."+data.total)
+                data.forEach(function (index, item) {
+                    $('<div class="d-flex align-items-center border-top border-bottom py-2"><a class="text-primary m-0">Order dengan kode order <b class="facture">'+index.order_facture+'</b> dengan total tagihan <b class="total">Rp.'+index.total+'</b> berhasil dibuat <a href="{{asset('assets/invoice/invoice.pdf')}}" class="text-primary" target="_blank"><b>klik untuk mengunduh invoice</b></a></a></div>').appendTo(".notif-item")
+                })
             }
         })
 
-        // notification on click show
-        $(".notification-click").click(function () {
-            $(".notif-detail").toggle();
+        /*show user detail*/
+        $('.profile').click(function () {
+            swal.fire({
+                title: '<span class="fw-bold text-center">PROFILE<span>',
+                html: '<img src="{{asset('assets/img/user_logo.png')}}" width="48">'
+                    + '<div class="row m-0 mb-3 mt-5 justify-content-center"> <label for="inputName" class="col-sm-2 col-form-label">Name</label> <div class="col-sm-6"> <input type="text"class="form-control" id="inputName" disabled value="Alif Al Mutawakil"></div></div>'
+                    +'<div class="row m-0 mb-3 mt-2 justify-content-center"> <label for="inputMail" class="col-sm-2 col-form-label">Email</label> <div class="col-sm-6"> <input type="mail"class="form-control" id="inputName" disabled value="Alif@gmail.com"></div></div>'
+                    +'<div class="row m-0 mb-3 mt-2 justify-content-center"> <label for="inputSeat" class="col-sm-2 col-form-label">seat</label> <div class="col-sm-6"> <input type="text"class="form-control" id="inputName" disabled value="25"></div></div>',
+                confirmButtonText: 'HOME'
+            })
         })
-
-        $(document).mouseup(function (e) {
-            let notif = $(".notif-detail");
-
-            if (!notif.is(e.target) && notif.has(e.target).length === 0) {
-                $(".notif-detail").hide('slow');
-            }
-        })
-
 
     </script>
 </body>

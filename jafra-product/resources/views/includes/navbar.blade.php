@@ -1,5 +1,5 @@
 <nav class="container-fluid px-2 py-2 m-0 mb-4 bg-clear-white shadow">
-    <div class="row align-items-center m-0 gap-4">
+    <div class="row align-items-center m-0 gap-2">
         <a class="navbar-brand col-lg-1 col-md-2 m-0" href="{{ route('home') }}">
             <img src="{{ asset('assets/img/jafra_logo.png') }}" alt="jafra logo" width="98" height="36">
         </a>
@@ -14,10 +14,12 @@
         {{-- chart and notification --}}
         <div class="col-auto py-4">
             <div class="position-relative">
-                <i class="fa fa-shopping-cart fs-3 text-primary" aria-hidden="true" ></i>
-                {{-- cart--}}
-                <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary" style="font-size: 10px">
+                <a href="{{ route('cart') }}">
+                    <i class="fa fa-shopping-cart fs-3 text-primary" aria-hidden="true" ></i>
+                    {{-- cart--}}
+                    <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary" style="font-size: 10px">
                 </span>
+                </a>
             </div>
             <div class="col-lg-4 col-11 col-md-6 card shadow border-radius-8 position-absolute translate-float i-10 d-none">
                 <div class="card-body">
@@ -39,19 +41,17 @@
             </span>
             </div>
             <div class="notif-detail col-lg-3 col-sm-4 col-md-4 card shadow border-radius-8 position-absolute translate-float i-10">
-                <div class="card-body">
+                <div class="card-body notif-item">
                     <p class="text-primary fw-bold">Notifikasi</p>
-                    <div class="d-flex align-items-center border-top border-bottom py-2">
-                        <a class="text-primary m-0">Order dengan kode order <b class="facture"></b> dengan total tagihan <b class="total"></b> berhasil dibuat</a>
-                    </div>
+
                 </div>
             </div>
         </div>
         {{--    user    --}}
-        <div class="col-auto justify-content-between">
+        <div class="col-auto justify-content-between profile">
             <div class="vr me-2" style="width: 1px;"></div>
             <img src="{{ asset("assets/img/user_logo.png") }}" alt="user logo">
-            <span class="px-2 text-primary">John Doe</span>
+            <span class="px-2 text-primary">Alif Al Mutawakil </span>
             <i class="fa fa-power-off" aria-hidden="true" style="transform: rotate(270deg)"></i>
         </div>
     </div>
