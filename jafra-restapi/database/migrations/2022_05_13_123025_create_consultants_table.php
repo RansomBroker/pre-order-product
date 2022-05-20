@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('consultant_email')->unique();
             $table->string('password')->nullable();
             $table->string('ticket_type')->nullable();
-            $table->timestamp();
-            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
+            $table->string('seat')->nullable();
+            $table->timestamps();
         });
     }
 
