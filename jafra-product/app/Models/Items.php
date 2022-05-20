@@ -10,4 +10,9 @@ class Items extends Model
     protected $primaryKey = 'item_id';
 
     protected $fillable = ['order_id', 'product_id', 'created_at'];
+
+    public function products()
+    {
+        return $this->belongsTo(Products::class, 'product_id');
+    }
 }

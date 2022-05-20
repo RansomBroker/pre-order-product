@@ -40,6 +40,10 @@ html{
     background-color: #7E12B8 !important; ;
 }
 
+.text-secondary {
+    color: #7E12B8 !important; ;
+}
+
 .bg-clear-white {
     background-color: #FFFFFF !important;
 }
@@ -117,3 +121,19 @@ html{
 
 }
 
+.hx-16{
+    height: 16rem;
+}
+
+.wy-16{
+    width: 16rem;
+}
+
+.no-border {
+    border: 0 !important;
+}
+
+/*
+.d-none {
+    display: none !important;
+}*/

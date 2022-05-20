@@ -107,8 +107,14 @@
                         let seatAvail= true;
                         if (seatAvail) {
                             swal.fire({
-                                icon: 'success',
-                                title: '<span>Terimakasih telah melakukan pemilihan kursi</span>'
+                                iconHtml: '<img src="{{asset('assets/img/email_logo.png')}}" width="100">',
+                                width: "50%",
+                                title: '<span class="text-uppercase text-center">THANKYOU FOR CHOOSING YOUR SEAT. PLESE CHECK <a href="#" class="text-secondary">JAFRATICKET.COM</a> FOR details on your seat. make sure you`re preordering our latest products at</span>',
+                                confirmButtonText: "jac2022.com"
+                            }).then((result) => {
+                                if(result.isConfirmed) {
+                                    window.location.replace("http://jac2022.com");
+                                }
                             })
                         } else {
                             swal.fire({

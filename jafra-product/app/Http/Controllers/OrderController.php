@@ -15,7 +15,7 @@ class OrderController extends Controller
     public function index()
     {
         // get 5 new data
-        $productData = Products::orderBy('product_id', 'DESC')->paginate(4);
+        $productData = Products::orderBy('product_id', 'DESC')->paginate(2);
 
         return view('home', [
             'products' => $productData
@@ -106,7 +106,7 @@ class OrderController extends Controller
             ->where('consultant_id', 1)
             ->get();
 
-        if ($orderExist <= 0) {
+        /*if ($orderExist <= 0) {
             // insert data to order
             $orderId = Orders::insertGetId([
                 'order_facture' => "JFR".rand(100000, 999999),
@@ -128,7 +128,27 @@ class OrderController extends Controller
             Carts::where("consultant_id", 1)->delete();
         } else {
             $item = false;
+        }*/
+
+        // insert data to order
+        $orderId = Orders::insertGetId([
+            'order_facture' => "JFR".rand(100000, 999999),
+            'consultant_id' => 1,
+            'total' => $subTotal->sum('products_sum_product_price'),
+            'created_at' => Carbon::now()
+        ]);
+        // insert all product and order_id into items table
+        $productItem = array();
+        foreach ($cartList as $list) {
+            $productItem[] = [
+                'order_id' => $orderId,
+                'product_id' => $list->products->product_id
+            ];
         }
+        // insert into items tables
+        $item = Items::insert($productItem);
+        // clear/delete carts
+        Carts::where("consultant_id", 1)->delete();
 
         return response()->json([
             'successOrder' => $item
@@ -160,11 +180,13 @@ class OrderController extends Controller
     public function getOrder()
     {
         $order = array();
-        foreach (Orders::where("consultant_id", 1)->get() as $data) {
-            $order["order_facture"] = $data->order_facture;
-            $order["total"] = $data->total;
+        $getOrder = Orders::where("consultant_id", 1)->get();
+        foreach ($getOrder as $data) {
+            $tmp = array();
+            $tmp["order_facture"] = $data->order_facture;
+            $tmp["total"] = $data->total;
+            array_push($order, $tmp);
         }
-
         return response()->json($order);
 
     }
