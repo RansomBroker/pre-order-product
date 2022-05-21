@@ -20,8 +20,15 @@ Route::group([
 ], function ($router) {
     Route::controller(AuthController::class)->group(function () {
         Route::post('/login', 'login');
+        Route::get('/logout', 'logout');
+        Route::get('/refresh', 'refresh');
+        /* test api auth*/
+        Route::get('/user', 'getAuthUser');
     });
 });
+
+/*check tokenvaliditiy*/
+Route::get('/token-validity', [AuthController::class, 'tokenValidity']);
 
 /*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
